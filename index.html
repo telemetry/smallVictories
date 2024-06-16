@@ -25,6 +25,15 @@
         color: orchid;
     }
 
+    a.bio-link {
+        cursor: pointer;
+    }
+
+
+    .bio {
+        display: none;
+    }
+
 
     body {
         margin: 0;
@@ -63,12 +72,22 @@
     }
 </style>
 
-<body>
+<body onload="showBio()">
 
     <div class="row">
         <div class="header">
             <h1>Small Victories</h1>
-            <p>Photography by <a href="https://terrygillespie.com">Terrence Gillespie</a></p>
+            <p>Photography by Terrence Gillespie. <a class="bio-link" onclick="showBio()">View Biography</a></p>
+
+
+        </div>
+        <div class="bio" id="biography">
+            <p>Born in Lima, Peru, Terrence was introduced to the camera at a young age & his first images mimicked
+                those
+                of his maternal grandfather Pedro Paz.</p>
+            <p>Terrence's work explores themes of solitude, belonging and non-places - a term coined by Marc Augé which
+                refers to anthropological spaces of transience where human beings remain anonymous.</p>
+            <p>He lives & works in Souh East Queensland, Australia</p>
         </div>
         <div class="column">
             <img src="img/00.jpg" style="width:100%" />
@@ -87,9 +106,20 @@
             <img src="img/15.jpg" style="width:100%" />
         </div>
         <div class="footer">
-            <p><a href="mailto:" terabyte+prints@gmail.com">Contact</a> for prints, zines &amp; enquiries.</p>
+            <p><a href="mailto:terabyte+prints@gmail.com">Contact Terrence</a> for prints, zines &amp; enquiries.</p>
             <p>Small Victories | 2004 - 2024</p>
             <p>&copy; <a href="https://terrygillespie.com">Terrence Gillespie</a>
 </body>
+
+<script>
+    function showBio() {
+        var x = document.getElementById("biography");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 </html>
