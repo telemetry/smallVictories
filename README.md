@@ -1,3 +1,3 @@
 # smallVictories
 Photography Portfolio of Terrence Gillespie
-Australian Based Phot Artist
+Australian Based Photo Artist
