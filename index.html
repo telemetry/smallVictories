@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,6 @@
         rel="stylesheet">
     <title>Small Victories - Photography by Terrence Gillespie</title>
 </head>
-
 <style>
     * {
         box-sizing: border-box;
@@ -26,7 +26,7 @@
         text-decoration: none;
     }
 
-    a.bio-link {
+    #bio-link {
         cursor: pointer;
     }
 
@@ -49,7 +49,6 @@
     .column {
         /* float: left;
         width: 50%; */
-
     }
 
     .column img {
@@ -75,7 +74,7 @@
     <div class="row">
         <div class="header">
             <h1>Small Victories</h1>
-            <p>Photography by Terrence Gillespie. <a class="bio-link" onclick="showBio()">View Bio</a>.</p>
+            <p>Photography by Terrence Gillespie. <a id="bio-link" onclick="losDos()">View Bio</a>.</p>
         </div>
         <div class="bio" id="biography">
             <p>Born in Lima, Peru, Terrence was introduced to the camera at a young age & his first images mimicked
@@ -88,7 +87,7 @@
         <div class="column">
             <img src="img/00.jpg" style="width:100%" />
             <img src="img/01.jpg" style="width:100%" />
-            <img src="img/02.jpg" style="width:100%" />            
+            <img src="img/02.jpg" style="width:100%" />
             <img src="img/03.jpg" style="width:100%" />
             <img src="img/04.jpg" style="width:100%" />
             <img src="img/05.jpg" style="width:100%" />
@@ -97,7 +96,7 @@
             <img src="img/08.jpg" style="width:100%" />
             <img src="img/09.jpg" style="width:100%" />
             <img src="img/10.jpg" style="width:100%" />
-            <img src="img/11.jpg" style="width:100%" />            
+            <img src="img/11.jpg" style="width:100%" />
             <img src="img/12.jpg" style="width:100%" />
             <img src="img/13.jpg" style="width:100%" />
             <img src="img/14.jpg" style="width:100%" />
@@ -110,13 +109,30 @@
 </body>
 
 <script>
+    // do both functions
+    function losDos() {
+        showBio();
+        switchCopy();
+    };
+    // show Biography text
     function showBio() {
         var x = document.getElementById("biography");
         if (x.style.display === "none") {
             x.style.display = "block";
+
         } else {
             x.style.display = "none";
         }
+    };
+    // change text on show and hide
+    function switchCopy() {
+        var x = document.getElementById("bio-link");
+        if (x.innerHTML === "View Bio") {
+            x.innerHTML = "Hide Bio";
+        } else {
+            x.innerHTML = "View Bio";
+        }
     }
 </script>
+
 </html>
