@@ -73,8 +73,7 @@
     }
 </style>
 
-<body onload="showBio()">
-
+<body onload="showBio(); currentYear()">
     <div class="row">
         <div class="header">
             <h1>Small Victories</h1>
@@ -93,7 +92,6 @@
             <img src="img/02.jpg" style="width:100%" />
             <img src="img/17.jpg" style="width:100%" />
             <img src="img/04.jpg" style="width:100%" />
-            <img src="img/03.jpg" style="width:100%" />
             <img src="img/05.jpg" style="width:100%" />
             <img src="img/06.jpg" style="width:100%" />
             <img src="img/19.jpg" style="width:100%" />
@@ -110,7 +108,7 @@
         </div>
         <div class="footer">
             <p><a href="mailto:terabyte+prints@gmail.com">Contact Terrence</a> for prints, zines &amp; enquiries.</p>
-            <p>Small Victories | 2004 - 2024</p>
+            <p>Small Victories | 2004 - <span id="year"></span></p>
             <p>&copy; <a href="https://terrygillespie.com">Terrence Gillespie</a> &vert; <a
                     href="img/Terrence_Gillespie_Artist_CV.pdf">Artist CV</a></p>
 </body>
@@ -140,6 +138,11 @@
             x.innerHTML = "View Bio";
         }
     }
+
+    function currentYear() {
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+      };
+
 </script>
 
 </html>
