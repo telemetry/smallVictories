@@ -14,14 +14,51 @@
         box-sizing: border-box;
     }
 
+    :root {
+        --bg-color: white;
+        --text-color: black;
+        --link-color: hotpink;
+        --visited-color: rebeccapurple;
+    }
+
+    .dark {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --link-color: hotpink;
+        --visited-color: #ffa07a;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Host Grotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+    }
+
     a {
-        color: hotpink;
+        color: var(--link-color);
         text-decoration: none;
+        transition: color 0.3s;
     }
 
     a:visited {
-        color: rebeccapurple;
+        color: var(--visited-color);
         text-decoration: none;
+    }
+
+    #theme-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        z-index: 1000;
+        font-weight: 500;
+        user-select: none;
+        font-size: 24px;
     }
 
     #bio-link {
@@ -34,14 +71,6 @@
 
     .bio p{
         font-weight: 200;
-    }
-
-    body {
-        margin: 0;
-        font-family: "Host Grotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 500;
-        font-style: normal;
     }
 
     .header {
@@ -72,7 +101,8 @@
     }
 </style>
 
-<body onload="showBio(); currentYear()">
+<body onload="showBio(); currentYear(); setTheme()">
+    <div id="theme-toggle" onclick="toggleTheme()">�</div>
     <div class="row">
         <div class="header">
             <h1>Small Victories</h1>
@@ -151,6 +181,32 @@
     function currentYear() {
     document.getElementById("year").innerHTML = new Date().getFullYear();
       };
+
+    function setTheme() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const body = document.body;
+        const toggle = document.getElementById('theme-toggle');
+        if (theme === 'dark') {
+            body.classList.add('dark');
+            toggle.textContent = '☀️';
+        } else {
+            toggle.textContent = '�';
+        }
+    }
+
+    function toggleTheme() {
+        const body = document.body;
+        const toggle = document.getElementById('theme-toggle');
+        if (body.classList.contains('dark')) {
+            body.classList.remove('dark');
+            toggle.textContent = '🌑';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.add('dark');
+            toggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
 
 </script>
 
