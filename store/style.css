@@ -1,0 +1,250 @@
+/* Small Victories — Print Store
+   Matches the main site: Host Grotesk, white/#121212 themes, hotpink links,
+   single 40em column, 12px radii, 🌑/☀️ toggle. */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: white;
+    --text-color: black;
+    --link-color: hotpink;
+    --visited-color: rebeccapurple;
+    --stage-color: #f4f3f1;
+    --line-color: #e4e2de;
+    --quiet-color: #8a8782;
+}
+
+.dark {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: hotpink;
+    --visited-color: #ffa07a;
+    --stage-color: #1c1c1c;
+    --line-color: #2c2c2c;
+    --quiet-color: #9a9a9a;
+}
+
+body {
+    margin: 0;
+    font-family: "Host Grotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:visited {
+    color: var(--visited-color);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    user-select: none;
+    font-size: 24px;
+}
+
+.row {
+    max-width: 40em;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.header {
+    text-align: left;
+}
+
+.lede,
+.footer p {
+    font-weight: 200;
+}
+
+.loading {
+    color: var(--quiet-color);
+}
+
+.notice {
+    border: 1px dashed var(--line-color);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--quiet-color);
+}
+
+/* ---- Print cards: one per row, like the portfolio ---- */
+
+.print-card {
+    margin-top: 48px;
+}
+
+.frame {
+    --frame-colour: #1c1c1c;
+    background: var(--stage-color);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    padding: 8%;
+    transition: background-color 0.3s;
+}
+
+.frame.portrait {
+    aspect-ratio: 4 / 5;
+}
+
+.frame.square {
+    aspect-ratio: 1 / 1;
+}
+
+.frame-inner {
+    border: 11px solid var(--frame-colour);
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    background: #fff;
+    padding: 7%;
+    width: 82%;
+}
+
+.frame.portrait .frame-inner {
+    width: 55%;
+}
+
+.frame.square .frame-inner {
+    width: 66%;
+}
+
+.frame-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.print-card h2 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 16px 0 4px;
+}
+
+.print-card .desc {
+    margin: 0 0 8px;
+    font-weight: 200;
+    font-size: 0.9rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.control-row label {
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--quiet-color);
+}
+
+select {
+    font: inherit;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 1px solid var(--line-color);
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.swatches {
+    display: flex;
+    gap: 8px;
+}
+
+.swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line-color);
+    cursor: pointer;
+    padding: 0;
+    outline-offset: 2px;
+}
+
+.swatch[aria-pressed="true"] {
+    outline: 2px solid var(--link-color);
+}
+
+.buy-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 2px;
+}
+
+.price {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.price small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 200;
+    color: var(--quiet-color);
+}
+
+.buy {
+    font: inherit;
+    font-weight: 600;
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.buy:hover {
+    background: var(--link-color);
+    color: white;
+}
+
+.buy:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.footer {
+    margin-top: 64px;
+}
+
+.fine {
+    font-size: 0.8rem;
+}
+
+.success-wrap {
+    max-width: 40em;
+    margin: 64px auto;
+    padding: 10px;
+}
