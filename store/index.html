@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <title>Print Store - Small Victories - Photography by Terrence Gillespie</title>
+    <meta name="description"
+        content="Framed photographic prints by Terrence Gillespie. Handmade Tasmanian Oak frames, archival cotton rag prints, free Australian delivery.">
+    <link rel="stylesheet" href="style.css">
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark')</script>
+</head>
+
+<body>
+    <div id="theme-toggle" onclick="toggleTheme()"></div>
+    <div class="row">
+        <div class="header">
+            <h1>Print Store</h1>
+            <p><a href="../">← Small Victories</a></p>
+            <p class="lede">Framed photographic prints, made to order. Printed on 310gsm 100% cotton rag
+                and framed by hand in Melbourne in FSC-certified Tasmanian Oak — black, white or natural
+                oak — behind museum-grade UV acrylic. Free delivery within Australia.</p>
+        </div>
+
+        <main id="prints" aria-live="polite">
+            <p class="loading">Loading prints…</p>
+        </main>
+
+        <div class="footer">
+            <p>Each print is made to order and ships in about a week.
+                <a href="mailto:terabyte+prints@gmail.com">Contact Terrence</a> with any questions.</p>
+            <p class="fine">Payments processed securely by Stripe. Prices in AUD and include delivery.</p>
+        </div>
+    </div>
+
+    <script src="theme.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
