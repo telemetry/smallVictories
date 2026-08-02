@@ -81,17 +81,37 @@ names), and add descriptions if you like.
 Re-running is safe: it updates in place, deactivates old prices when amounts
 change, and mints fresh payment links as needed.
 
-## 4. Fulfilment (how an order becomes a framed print on a wall)
+## 4. Fulfilment (Format Framing's artist programme)
 
-This is a dropship flow — Stripe takes the money, you place the order:
+This is a dropship flow — Stripe takes the money, you place the order with
+Format. They have a formal artists' programme for exactly this
+([Working with Artists](https://formatframing.com.au)):
 
-1. Turn on email notifications for successful payments:
-   Stripe Dashboard → Settings → **Communication preferences**.
-2. When an order lands you'll see the print, size, frame colour, quantity, and
-   the customer's shipping address/phone in the payment details.
-3. Order exactly that from Format Framing's site (upload the full-res file,
-   pick the size and colour), shipped directly to the customer's address.
-   Their prints are made and shipped in ~5 days, free AU delivery.
+**One-time setup**
+
+1. Email info@formatframing.com.au to introduce yourself and formalise the
+   arrangement (they reply within two business days).
+2. Set up the shared Dropbox folder of high-res, print-ready files with
+   filenames matching the store's print titles — then per order you only need
+   to reference the filename, no uploads.
+3. For editioned work: request blank Certificates of Authenticity with your
+   first order and pre-sign them; Format adds title + edition number to the
+   back of each frame as orders come in. You keep the edition ledger.
+4. Turn on Stripe payment-success emails: Dashboard → Settings →
+   **Communication preferences**.
+
+**Each order**
+
+1. Stripe email arrives — note the print, size, frame colour, matte, quantity,
+   and the customer's shipping address/phone.
+2. Place the matching order on Format's Print & Frame page. In the checkout
+   notes: the Dropbox filename, COA + edition number if applicable, and
+   white-label/packaging requests.
+3. **Billing address = yours, shipping address = the customer's.**
+4. Done. Format prints, frames, packages (biodegradable wrap, recycled
+   cartons) and ships free express, carbon neutral, fully tracked — you get
+   tracking by email, the customer gets a text, and it's at their door within
+   two weeks.
 
 ## Notes
 

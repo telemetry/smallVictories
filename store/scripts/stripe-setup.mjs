@@ -86,6 +86,25 @@ async function findProductBySlug(slug) {
 }
 
 const colourOptions = frames.colours.map((c) => ({ label: c.label, value: c.id }));
+const matteOptions = (frames.mattes ?? []).map((m) => ({ label: m.label, value: m.id }));
+const customFields = [
+  {
+    key: "frame_colour",
+    label: { type: "custom", custom: "Frame colour" },
+    type: "dropdown",
+    dropdown: { options: colourOptions },
+  },
+  ...(matteOptions.length
+    ? [
+        {
+          key: "matte",
+          label: { type: "custom", custom: "Matte" },
+          type: "dropdown",
+          dropdown: { options: matteOptions },
+        },
+      ]
+    : []),
+];
 
 for (const print of prints.filter((p) => p.active)) {
   const name = `${print.title} — Framed Print`;
@@ -149,14 +168,7 @@ for (const print of prints.filter((p) => p.active)) {
         ],
         shipping_address_collection: { allowed_countries: ["AU"] },
         phone_number_collection: { enabled: true },
-        custom_fields: [
-          {
-            key: "frame_colour",
-            label: { type: "custom", custom: "Frame colour" },
-            type: "dropdown",
-            dropdown: { options: colourOptions },
-          },
-        ],
+        custom_fields: customFields,
         metadata: { sv_slug: print.slug, sv_size: sizeId },
         after_completion: { type: "redirect", redirect: { url: config.successUrl } },
       });

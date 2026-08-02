@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
 
   try {
-    const { priceId, colour, quantity = 1 } = req.body ?? {};
+    const { priceId, colour, matte, quantity = 1 } = req.body ?? {};
     const stripeConfig = readJson("stripe.json");
     const storeConfig = readJson("store.config.json");
     const frames = readJson("frames.json");
@@ -36,6 +36,8 @@ export default async function handler(req, res) {
     if (!known.has(priceId)) return res.status(400).json({ error: "Unknown price" });
     if (!frames.colours.some((c) => c.id === colour))
       return res.status(400).json({ error: "Unknown frame colour" });
+    if ((frames.mattes ?? []).length && !frames.mattes.some((m) => m.id === matte))
+      return res.status(400).json({ error: "Unknown matte option" });
 
     const qty = Math.min(Math.max(parseInt(quantity, 10) || 1, 1), 10);
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -44,7 +46,7 @@ export default async function handler(req, res) {
       line_items: [{ price: priceId, quantity: qty }],
       shipping_address_collection: { allowed_countries: ["AU"] },
       phone_number_collection: { enabled: true },
-      metadata: { frame_colour: colour },
+      metadata: { frame_colour: colour, matte: matte ?? "" },
       success_url: storeConfig.successUrl,
       cancel_url: storeConfig.cancelUrl,
     });

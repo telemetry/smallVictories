@@ -51,6 +51,7 @@ function renderCard(print) {
     const state = {
         sizeId: print.sizes[0],
         colourId: frames.colours[0].id,
+        matteId: frames.mattes?.[0]?.id ?? null,
     };
 
     const frameEl = document.createElement("div");
@@ -114,6 +115,29 @@ function renderCard(print) {
     colourRow.append(colourLabel, swatches);
     frameEl.style.setProperty("--frame-colour", frames.colours[0].swatch);
 
+    // Matte toggle — the preview's white border is the matte
+    const matteRow = document.createElement("div");
+    matteRow.className = "control-row";
+    const matteLabel = document.createElement("label");
+    matteLabel.textContent = "Matte";
+    const mattes = document.createElement("div");
+    mattes.className = "toggle-group";
+    for (const matte of frames.mattes ?? []) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "toggle";
+        btn.textContent = matte.label;
+        btn.setAttribute("aria-pressed", String(matte.id === state.matteId));
+        btn.addEventListener("click", () => {
+            state.matteId = matte.id;
+            for (const b of mattes.children) b.setAttribute("aria-pressed", "false");
+            btn.setAttribute("aria-pressed", "true");
+            inner.classList.toggle("no-matte", matte.id === "no-matte");
+        });
+        mattes.appendChild(btn);
+    }
+    matteRow.append(matteLabel, mattes);
+
     // Price + buy
     const buyRow = document.createElement("div");
     buyRow.className = "buy-row";
@@ -147,7 +171,7 @@ function renderCard(print) {
                 const res = await fetch(config.checkoutEndpoint, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ priceId: linkInfo.priceId, colour: state.colourId }),
+                    body: JSON.stringify({ priceId: linkInfo.priceId, colour: state.colourId, matte: state.matteId }),
                 });
                 const data = await res.json();
                 if (!data.url) throw new Error(data.error || "No checkout URL");
@@ -170,7 +194,7 @@ function renderCard(print) {
 
     const controls = document.createElement("div");
     controls.className = "controls";
-    controls.append(sizeRow, colourRow, buyRow);
+    controls.append(sizeRow, colourRow, ...(mattes.children.length ? [matteRow] : []), buyRow);
 
     if (print.description) {
         const desc = document.createElement("p");
