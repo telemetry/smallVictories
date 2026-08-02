@@ -1,8 +1,12 @@
 {
   "supplier": "Format Framing",
   "supplierUrl": "https://formatframing.com.au/products/online-print-and-frame",
-  "notes": "Victorian Ash frames handmade in Melbourne — painted black, painted white, natural, walnut or limewash. Printed on 310gsm 100% cotton rag behind museum-grade UV acrylic; price includes print, frame and AU delivery. Gallery Small (up to 60cm): 15mm face, 30mm depth, shadowbox with 15mm spacer for works over 30cm. Gallery Large: shadowbox, 19mm face, 40mm depth. Ships in ~5 days.",
+  "notes": "FSC-certified Victorian Ash frames handmade in Melbourne — painted black, painted white, natural, walnut or limewash, with or without a matte. Giclée print on Ilford Prestige Galarie 310gsm 100% smooth cotton rag, dry mounted to acid-free foam board, behind 3mm museum-grade plexiglass, finished with stainless steel hanging wire. Price includes print, frame and free express AU delivery (trackable, carbon neutral) — at the door within two weeks.",
   "costsAreEstimates": false,
+  "mattes": [
+    { "id": "matte", "label": "White matte" },
+    { "id": "no-matte", "label": "No matte" }
+  ],
   "colours": [
     { "id": "black", "label": "Painted Black", "swatch": "#1c1c1c" },
     { "id": "white", "label": "Painted White", "swatch": "#f4f2ec" },

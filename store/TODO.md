@@ -32,7 +32,17 @@ Remember Stripe's fee comes out of your side: ~1.7% + $0.30 per domestic transac
 - [ ] Trim the `sizes` array per print if some shouldn't be offered large/small
 - [ ] Optional: add a short `description` per print
 
-## 3. Stripe — test mode
+## 3. Format Framing artist setup (one-time)
+
+- [ ] Email info@formatframing.com.au to introduce yourself and formalise the artist
+      arrangement (they reply within two business days)
+- [ ] Set up the shared Dropbox folder of high-res print-ready files, filenames matching
+      the store's print titles (rename the `Untitled NN` titles first!)
+- [ ] Request blank COA stickers with the first order and pre-sign them; start an
+      edition-number ledger
+- [ ] Decide packaging: white-label (no Format branding)? Tape / stickers / postcards?
+
+## 4. Stripe — test mode
 
 - [ ] Create a Stripe account at [stripe.com](https://stripe.com) (country: Australia)
 - [ ] Copy the **test** secret key from [dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys)
@@ -41,7 +51,7 @@ Remember Stripe's fee comes out of your side: ~1.7% + $0.30 per domestic transac
 - [ ] Do a test purchase with card `4242 4242 4242 4242` (any future expiry, any CVC)
 - [ ] Check the order shows the size, frame colour, shipping address and phone in the Stripe dashboard
 
-## 4. Stripe — go live
+## 5. Stripe — go live
 
 - [ ] Activate the Stripe account (business details, bank account for payouts)
 - [ ] Decide on GST: not registered (under $75k turnover) → charge none; registered → enable Stripe Tax
@@ -52,13 +62,16 @@ Remember Stripe's fee comes out of your side: ~1.7% + $0.30 per domestic transac
 - [ ] Make one real purchase yourself end-to-end (you can refund it) and place the matching
       Format Framing order to test the full dropship flow
 
-## 5. Announce
+## 6. Announce
 
 - [ ] Add the Print Store link back to the homepage (it was removed for the soft launch)
 - [ ] Optional: link it from Instagram [@tezjnr](https://www.instagram.com/tezjnr/) / anywhere else
 
 ## Ongoing — each order
 
-1. Stripe email arrives → open the payment, note print, size, frame colour, quantity, address, phone
-2. Order exactly that at Format Framing (upload the **full-res master**, not the web file), shipped to the customer's address
-3. Done — they make and ship in ~5 days, free AU delivery
+1. Stripe email arrives → note print, size, frame colour, matte, quantity, address, phone
+2. Place the matching order on Format's Print & Frame page — in the notes: the Dropbox
+   filename, COA + edition number, white-label/packaging requests
+3. **Billing address = yours, shipping address = the customer's**
+4. Done — free express, tracked, carbon neutral; at the customer's door within two weeks
+   (you get tracking by email, they get a text)
