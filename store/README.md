@@ -109,7 +109,7 @@ Format. They have a formal artists' programme for exactly this
    white-label/packaging requests.
 3. **Billing address = yours, shipping address = the customer's.**
 4. Done. Format prints, frames, packages (biodegradable wrap, recycled
-   cartons) and ships free express, carbon neutral, fully tracked — you get
+   cartons) and ships free express, fully tracked (Australian addresses only) — you get
    tracking by email, the customer gets a text, and it's at their door within
    two weeks.
 

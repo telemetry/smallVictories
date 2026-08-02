@@ -73,5 +73,5 @@ Remember Stripe's fee comes out of your side: ~1.7% + $0.30 per domestic transac
 2. Place the matching order on Format's Print & Frame page — in the notes: the Dropbox
    filename, COA + edition number, white-label/packaging requests
 3. **Billing address = yours, shipping address = the customer's**
-4. Done — free express, tracked, carbon neutral; at the customer's door within two weeks
+4. Done — free express, tracked (Australia only); at the customer's door within two weeks
    (you get tracking by email, they get a text)
