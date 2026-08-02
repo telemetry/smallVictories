@@ -1,0 +1,61 @@
+name: Stripe Setup
+
+# Runs store/scripts/stripe-setup.mjs and commits the resulting
+# store/config/stripe.json (which activates the storefront Buy buttons).
+#
+# One-time prep (repo Settings → Secrets and variables → Actions):
+#   STRIPE_SECRET_KEY_TEST  — sk_test_... from dashboard.stripe.com/test/apikeys
+#   STRIPE_SECRET_KEY_LIVE  — sk_live_... (only when going live)
+#
+# Then: Actions tab → "Stripe Setup" → Run workflow → pick test or live.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Stripe mode"
+        type: choice
+        options:
+          - test
+          - live
+        default: test
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: store
+        run: npm install --no-audit --no-fund
+
+      - name: Run Stripe setup (${{ inputs.mode }})
+        working-directory: store
+        env:
+          STRIPE_SECRET_KEY: ${{ inputs.mode == 'live' && secrets.STRIPE_SECRET_KEY_LIVE || secrets.STRIPE_SECRET_KEY_TEST }}
+        run: |
+          if [ -z "$STRIPE_SECRET_KEY" ]; then
+            echo "::error::Secret not set. Add STRIPE_SECRET_KEY_TEST (or _LIVE) in repo Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          if [ "${{ inputs.mode }}" = "live" ]; then
+            node scripts/stripe-setup.mjs --live
+          else
+            node scripts/stripe-setup.mjs
+          fi
+
+      - name: Commit stripe.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add store/config/stripe.json
+          git diff --staged --quiet || git commit -m "Stripe setup (${{ inputs.mode }}): update products, prices and payment links"
+          git push
