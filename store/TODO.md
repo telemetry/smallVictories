@@ -5,22 +5,23 @@ Tick things off here as you go — full instructions for each step are in [READM
 
 ## 1. Pricing
 
-- [ ] Get real prices from [Format Framing — Online Print and Frame](https://formatframing.com.au/products/online-print-and-frame)
+- [x] Get real prices from [Format Framing — Online Print and Frame](https://formatframing.com.au/products/online-print-and-frame)
       and fill in the **Real cost** column below
-- [ ] Update `costFramedAud` for each size in `config/frames.json` with those real costs
-- [ ] Remove the `"estimate": true` flags and set `"costsAreEstimates": false` in `config/frames.json`
-- [ ] Run `npm run stripe:dry-run` and sanity-check the retail prices it prints
+- [x] Update `costFramedAud` for each size in `config/frames.json` with those real costs
+- [x] Remove the `"estimate": true` flags and set `"costsAreEstimates": false` in `config/frames.json`
+- [x] Run `npm run stripe:dry-run` and sanity-check the retail prices it prints
 - [ ] Happy with the 2.5× markup (cost + 150%)? If not, change `markup` in `config/store.config.json`
 
-Current pricing at **2.5× markup, rounded up to the nearest $5** (retail recalculates automatically from whatever costs are in `frames.json`):
+Real Format Framing costs at **2.5× markup, rounded up to the nearest $5** (retail recalculates automatically from `frames.json`). Rectangular sizes come in both orientations; squares apply to square prints only:
 
-| Size | Est. cost (AUD) | Real cost (fill in) | Retail @ 2.5× (est.) |
+| Size | Range | Real cost (AUD) | Retail @ 2.5× |
 |---|---|---|---|
-| 30 × 25 cm | $119 | $ | $300 |
-| 40 × 30 cm | $149 | $ | $375 |
-| 50 × 40 cm | $199 | $ | $500 |
-| 70 × 50 cm | $259 | $ | $650 |
-| 90 × 60 cm | $329 | $ | $825 |
+| 30 × 20 cm | Gallery Small | $99 | $250 |
+| 30 × 30 cm | Gallery Small | $99 | $250 |
+| 60 × 40 cm | Gallery Small | $249 | $625 |
+| 60 × 60 cm | Gallery Small | $249 | $625 |
+| 90 × 60 cm | Gallery Large | $399 | $1,000 |
+| 120 × 80 cm | Gallery Large | $749 | $1,875 |
 
 Remember Stripe's fee comes out of your side: ~1.7% + $0.30 per domestic transaction (≈ $5–$15 at these prices).
 

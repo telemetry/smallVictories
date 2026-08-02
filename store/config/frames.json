@@ -1,53 +1,69 @@
 {
   "supplier": "Format Framing",
   "supplierUrl": "https://formatframing.com.au/products/online-print-and-frame",
-  "notes": "Handmade in Melbourne from FSC-certified Tasmanian Oak. Prints on 310gsm 100% cotton rag with Epson UltraChrome inks, behind museum-grade UV acrylic. Works over 300mm are framed shadowbox-style with a 15mm internal spacer. Free AU delivery, ships within ~5 days.",
-  "costsAreEstimates": true,
+  "notes": "Victorian Ash frames handmade in Melbourne — painted black, painted white, natural, walnut or limewash. Printed on 310gsm 100% cotton rag behind museum-grade UV acrylic; price includes print, frame and AU delivery. Gallery Small (up to 60cm): 15mm face, 30mm depth, shadowbox with 15mm spacer for works over 30cm. Gallery Large: shadowbox, 19mm face, 40mm depth. Ships in ~5 days.",
+  "costsAreEstimates": false,
   "colours": [
-    { "id": "black", "label": "Black", "swatch": "#1c1c1c" },
-    { "id": "white", "label": "White", "swatch": "#f4f2ec" },
-    { "id": "oak", "label": "Natural Oak", "swatch": "#c69f6a" }
+    { "id": "black", "label": "Painted Black", "swatch": "#1c1c1c" },
+    { "id": "white", "label": "Painted White", "swatch": "#f4f2ec" },
+    { "id": "natural", "label": "Natural", "swatch": "#c69f6a" },
+    { "id": "walnut", "label": "Walnut", "swatch": "#5d4433" },
+    { "id": "limewash", "label": "Limewash", "swatch": "#ddd5c6" }
   ],
   "sizes": [
     {
-      "id": "300x250",
-      "label": "30 × 25 cm",
-      "widthMm": 300,
-      "heightMm": 250,
-      "costFramedAud": 119,
-      "estimate": true
+      "id": "300x200",
+      "label": "30 × 20 cm",
+      "wCm": 30,
+      "hCm": 20,
+      "shape": "rect",
+      "range": "Gallery Small",
+      "costFramedAud": 99
     },
     {
-      "id": "400x300",
-      "label": "40 × 30 cm",
-      "widthMm": 400,
-      "heightMm": 300,
-      "costFramedAud": 149,
-      "estimate": true
+      "id": "300x300",
+      "label": "30 × 30 cm",
+      "wCm": 30,
+      "hCm": 30,
+      "shape": "square",
+      "range": "Gallery Small",
+      "costFramedAud": 99
     },
     {
-      "id": "500x400",
-      "label": "50 × 40 cm",
-      "widthMm": 500,
-      "heightMm": 400,
-      "costFramedAud": 199,
-      "estimate": true
+      "id": "600x400",
+      "label": "60 × 40 cm",
+      "wCm": 60,
+      "hCm": 40,
+      "shape": "rect",
+      "range": "Gallery Small",
+      "costFramedAud": 249
     },
     {
-      "id": "700x500",
-      "label": "70 × 50 cm",
-      "widthMm": 700,
-      "heightMm": 500,
-      "costFramedAud": 259,
-      "estimate": true
+      "id": "600x600",
+      "label": "60 × 60 cm",
+      "wCm": 60,
+      "hCm": 60,
+      "shape": "square",
+      "range": "Gallery Small",
+      "costFramedAud": 249
     },
     {
       "id": "900x600",
       "label": "90 × 60 cm",
-      "widthMm": 900,
-      "heightMm": 600,
-      "costFramedAud": 329,
-      "estimate": true
+      "wCm": 90,
+      "hCm": 60,
+      "shape": "rect",
+      "range": "Gallery Large",
+      "costFramedAud": 399
+    },
+    {
+      "id": "1200x800",
+      "label": "120 × 80 cm",
+      "wCm": 120,
+      "hCm": 80,
+      "shape": "rect",
+      "range": "Gallery Large",
+      "costFramedAud": 749
     }
   ]
 }

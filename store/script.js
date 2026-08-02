@@ -21,6 +21,13 @@ const [config, frames, prints, stripeCfg] = await Promise.all([
 ]);
 
 const sizesById = Object.fromEntries(frames.sizes.map((s) => [s.id, s]));
+
+// Rectangular sizes come in both orientations at the same price —
+// show each print's sizes in its own orientation.
+const sizeText = (size, orientation) =>
+    orientation === "portrait" && size.shape !== "square"
+        ? `${size.hCm} × ${size.wCm} cm`
+        : `${size.wCm} × ${size.hCm} cm`;
 const stripeReady = Boolean(stripeCfg?.products) || Boolean(config.checkoutEndpoint);
 
 $prints.innerHTML = "";
@@ -76,7 +83,7 @@ function renderCard(print) {
         if (!size) continue;
         const opt = document.createElement("option");
         opt.value = sizeId;
-        opt.textContent = `${size.label} — ${formatAud(retailPriceAud(size.costFramedAud, config))}`;
+        opt.textContent = `${sizeText(size, print.orientation)} — ${formatAud(retailPriceAud(size.costFramedAud, config))}`;
         select.appendChild(opt);
     }
     sizeRow.append(sizeLabel, select);
