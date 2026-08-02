@@ -66,6 +66,7 @@ function renderCard(print) {
     img.alt = `${print.title} — framed print preview`;
     img.loading = "lazy";
     inner.appendChild(img);
+    inner.classList.toggle("no-matte", state.matteId === "no-matte");
     frameEl.appendChild(inner);
 
     const h2 = document.createElement("h2");
